@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':jeewx-boot-base-api')
+    implementation "org.jeewxframework.boot:jeewx-boot-start-core"
+}

@@ -1,0 +1,7 @@
+dependencies {
+    compile project(':jeewx-boot-base-api')
+
+    implementation "org.apache.commons:commons-email"
+    implementation "com.aliyun:aliyun-java-sdk-core"
+    implementation "com.aliyun:aliyun-java-sdk-dysmsapi"
+}

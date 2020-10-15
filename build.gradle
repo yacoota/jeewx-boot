@@ -1,0 +1,110 @@
+group 'org.jeewxframework.boot'
+version '1.0.3'
+
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    sourceCompatibility = targetJavaVersion
+    targetCompatibility = targetJavaVersion
+
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    configurations {
+        all*.exclude group: 'commons-logging'
+        developmentOnly
+        runtimeClasspath {
+            extendsFrom developmentOnly
+        }
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    ext {
+        druid_version = "1.1.17"
+        springboot_version = "2.1.3.RELEASE"
+        commons_version = "2.6"
+        commons_fileupload_version = "1.4"
+        commons_chalics_version = "2.7.1"
+        commons_email_version = "1.5"
+        commons_httpclient_version = "3.0.1"
+        velocity_version = "1.7"
+        velocity_tools_version = "2.0"
+        guava_version = "12.0"
+        ueditor_mini_version = "1.0"
+        xstream_version = "1.4.7"
+        autopoi_web_version = "1.0.4"
+        poi_version = "3.9"
+        hutool_version = "4.5.15"
+        aliyun_oss_version = "3.6.0"
+        aliyun_java_sdk_core_version = "3.2.3"
+        aliyun_java_sdk_dysms_api_version = "1.0.0"
+        jeewx_api_version = "1.3.1"
+        jeewx_boot_start_core_version = "1.0.7"
+    }
+
+    dependencies {
+        implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.3.RELEASE')
+
+        implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2"
+        implementation "org.apache.velocity:velocity:${velocity_version}"
+        implementation "org.apache.velocity:velocity-tools:${velocity_tools_version}"
+        implementation "mysql:mysql-connector-java:5.1.47"
+        implementation "com.alibaba:druid-spring-boot-starter:${druid_version}"
+        implementation "com.alibaba:fastjson:1.2.56"
+        implementation "com.baidu.ueditor:ueditor-mini:${ueditor_mini_version}"
+        implementation "commons-io:commons-io:${commons_version}"
+        implementation "commons-lang:commons-lang:${commons_version}"
+        implementation "commons-fileupload:commons-fileupload:${commons_fileupload_version}"
+        implementation "org.apache.commons:commons-chalics:${commons_chalics_version}"
+        implementation "org.apache.commons:commons-email:${commons_email_version}"
+        implementation "commons-httpclient:commons-httpclient:${commons_httpclient_version}"
+        implementation "org.apache.poi:poi:${poi_version}"
+        implementation "org.apache.poi:poi-ooxml:${poi_version}"
+        implementation "org.apache.poi:poi-ooxml-schemas:${poi_version}"
+        implementation "com.thoughtworks.xstream:xstream:${xstream_version}"
+        implementation "cn.hutool:hutool-all:${hutool_version}"
+        implementation "com.aliyun.oss:aliyun-sdk-oss:${aliyun_oss_version}"
+        implementation "com.aliyun:aliyun-java-sdk-dysmsapi:${aliyun_java_sdk_dysms_api_version}"
+        implementation "com.aliyun:aliyun-java-sdk-core:${aliyun_java_sdk_core_version}"
+        implementation "org.jeecgframework:jeewx-api:${jeewx_api_version}"
+        implementation "org.jeecgframework:autopoi-web:${autopoi_web_version}"
+        implementation "org.jeewxframework.boot:jeewx-boot-start-core:${jeewx_boot_start_core_version}"
+
+        compileOnly "org.projectlombok:lombok:1.18.12"
+        annotationProcessor "org.projectlombok:lombok:1.18.12"
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+        testCompileOnly 'org.projectlombok:lombok:1.18.12'
+
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            resources {
+                srcDirs = ['src/main/java', 'src/main/resources']
+            }
+        }
+    }
+
+    jar {
+        manifest {
+            attributes("provider": "Gradle")
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        maven { url "http://maven.jeewx.com/nexus/content/repositories/jeecg" }
+    }
+    defaultTasks 'clean', 'build', 'assemble'
+}

@@ -1,0 +1,17 @@
+dependencies {
+    compile project(':jeewx-boot-base-api')
+    compile project(':jeewx-boot-base-system')
+    compile project(':jeewx-boot-module-weixin')
+    compile project(':huodong:jeewx-boot-module-goldenegg')
+
+
+    implementation "commons-httpclient:commons-httpclient"
+    implementation "com.thoughtworks.xstream:xstream"
+    implementation "com.thoughtworks.xstream:xstream"
+    implementation "com.thoughtworks.xstream:xstream"
+    implementation "com.thoughtworks.xstream:xstream"
+    implementation "com.thoughtworks.xstream:xstream"
+    implementation "com.thoughtworks.xstream:xstream"
+    implementation "com.thoughtworks.xstream:xstream"
+
+}

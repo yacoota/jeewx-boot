@@ -1,0 +1,11 @@
+rootProject.name = 'jeewx-boot'
+include 'jeewx-boot-base-api'
+include 'jeewx-boot-base-system'
+include 'jeewx-boot-module-weixin'
+include 'jeewx-boot-start'
+include 'huodong:jeewx-boot-module-cms'
+include 'huodong:jeewx-boot-module-goldenegg'
+
+findProject(':huodong:jeewx-boot-module-cms')?.name = 'jeewx-boot-module-cms'
+findProject(':huodong:jeewx-boot-module-goldenegg')?.name = 'jeewx-boot-module-goldenegg'
+

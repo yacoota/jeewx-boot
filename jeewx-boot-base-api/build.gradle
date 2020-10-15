@@ -1,0 +1,5 @@
+dependencies {
+    implementation "com.aliyun.oss:aliyun-sdk-oss"
+    implementation "org.jeewxframework.boot:jeewx-boot-start-core"
+    implementation "org.jeecgframework:autopoi-web"
+}
