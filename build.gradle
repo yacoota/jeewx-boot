@@ -1,6 +1,7 @@
+// https://gitee.com/jeecg/jeewx-boot.git
+
 group 'org.jeewxframework.boot'
 version '1.0.3'
-
 
 subprojects {
     apply plugin: 'java'
